@@ -1,14 +1,36 @@
-1) Clone the repository of ProxySpider app :
+# Proxy Spider Client 
+Proxy Spider Client is a docker image which can deliver to you list of proxy to local txt file from ProxySpider Api.
+List of proxy will be delivered and updated to txt file every minute.
+
+### Installation guide
+- Clone ProxySpider app:
 ```
 cd ~
 git clone https://github.com/LixLab/proxy-spider-client.git
 ```
-2) Build docker image:
+
+- Build docker image:
 ```
 cd proxy-spider-client
 docker build -t proxy-spider-client .
 ```
-3) Run docker container in background with mount parameters:
+
+- Create directory for storing proxy.txt
 ```
-docker run -v ~/code/proxy.txt/proxy.txt:/opt/app/shared/proxy.txt --restart always -itd proxy-spider-client
+mkdir ~/FOLDER_NAME_HERE
 ```
+
+- Run docker container in background with your volume information:
+```
+docker run -v ~/FOLDER_NAME_HERE:/opt/app/shared --restart always -itd proxy-spider-client
+```
+
+- Now you can see in ```~/FOLDER_NAME_HERE/proxy.txt``` list of proxy like:
+```
+111.111.111.111
+111.111.111.222
+111.111.111.444
+111.111.111.999
+```
+
+- Enjoy!
